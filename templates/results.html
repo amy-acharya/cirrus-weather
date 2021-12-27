@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <br><hr><br>
+
+        <h3 align="center">Climate record data for {{ month }} {{ year }}</h3>
+
+        <div id="map" style="margin: auto;"></div>
+
+        <script type="text/javascript">
+            function initMap() {
+                var location1 = {lat: {{ data.lat1 }}, lng: {{ data.lng1 }}};
+                var location2 = {lat: {{ data.lat2 }}, lng: {{ data.lng2 }}};
+                var location3 = {lat: {{ data.lat3 }}, lng: {{ data.lng3 }}};
+                var location4 = {lat: {{ data.lat4 }}, lng: {{ data.lng4 }}};
+                var location5 = {lat: {{ data.lat5 }}, lng: {{ data.lng5 }}};
+                var location6 = {lat: {{ data.lat6 }}, lng: {{ data.lng6 }}};
+                var location7 = {lat: {{ data.lat7 }}, lng: {{ data.lng7 }}};
+                var location8 = {lat: {{ data.lat8 }}, lng: {{ data.lng8 }}};
+                var location9 = {lat: {{ data.lat9 }}, lng: {{ data.lng9 }}};
+                var location10 = {lat: {{ data.lat10 }}, lng: {{ data.lng10 }}};
+                var location11 = {lat: {{ data.lat11 }}, lng: {{ data.lng11 }}};
+                var location12 = {lat: {{ data.lat12 }}, lng: {{ data.lng12 }}};
+
+                var pl = JSON.parse({{ lbldata|tojson }});
+
+                let labels = [];
+                for (let j = 1; j < 13; j++) {
+                    let label = "pl.lbl" + String(j);
+                    let result = eval(label);
+                    labels.push(result);
+                }
+
+                var center = {lat: 39.50, lng: -98.35};
+
+                var map = new google.maps.Map(document.getElementById("map"), {
+                    center: center,
+                    zoom: 3
+                });
+
+                let locations = [
+                    location1, location2, location3, location4,
+                    location5, location6, location7, location8,
+                    location9, location10, location11, location12
+                ];
+                let colors = [
+                    "red-dot", "blue-dot", "red", "yellow-dot",
+                    "orange-dot", "ltblue-dot", "lightblue", "green-dot",
+                    "pink-dot", "purple-dot", "green", "pink"
+                ];
+
+                for (let i = 0; i < 12; i++) {
+                    var marker = new google.maps.Marker({
+                        position: locations[i],
+                        map: map,
+                        title: labels[i],
+                        icon: {url: "http://maps.google.com/mapfiles/ms/icons/" + colors[i] + ".png"}
+                    });
+                }
+            }
+
+        </script>
+
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC52kb8UIwifmEbEBv-M9yOBi11M8vwNn4&callback=initMap"></script>
+
+        <br>
+        <hr>
+
+        <footer>
+            <p>
+                DISCLAIMER: Some of the information may be incorrect or missing.
+                All data was pulled from
+                <a href="https://www.visualcrossing.com/weather-data">this website</a>.
+            </p>
+
+            <p >LEGEND:</p>
+                <br>
+                <table id="legend">
+                    <tr>
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/red-dot.png"
+                            alt="Red marker with dot"></td>
+                        <td class="parm">Max High Temp</td>
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
+                            alt="Blue marker with dot"></td>
+                        <td class="parm">Min Low Temp</td>
+
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/red.png"
+                            alt="Red marker"></td>
+                        <td class="parm">Max Average Temp</td>
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"
+                            alt="Yellow marker with dot"></td>
+                        <td class="parm">Max Wind Chill</td>
+                    </tr>
+                    <tr>
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/orange-dot.png"
+                            alt="Orange marker with dot"></td>
+                        <td class="parm">Max Heat Index</td>
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/ltblue-dot.png"
+                            alt="Light blue marker with dot"></td>
+                        <td class="parm">Highest Precipitation</td>
+
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/lightblue.png"
+                            alt="Light blue marker"></td>
+                        <td class="parm">Highest Snow Depth</td>
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/green-dot.png"
+                            alt="Green marker with dot"></td>
+                        <td class="parm">Highest Wind Speed</td>
+                    </tr>
+                    <tr>
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/pink-dot.png"
+                            alt="Pink marker with dot"></td>
+                        <td class="parm">Highest Wind Gusts</td>
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/purple-dot.png"
+                            alt="Purple marker with dot"></td>
+                        <td class="parm">Highest Visibility</td>
+
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/green.png"
+                            alt="Green marker"></td>
+                        <td class="parm">Highest Cloud Cover</td>
+                        <td class="marker"><img
+                            src="http://maps.google.com/mapfiles/ms/micons/pink.png"
+                            alt="Pink marker"></td>
+                        <td class="parm">Highest Relative Humidity</td>
+                    </tr>
+                </table>
+
+            <p>Marker icons taken from <a
+                href="https://sites.google.com/site/gmapsdevelopment/">this site</a>.
+            </p>
+
+        </footer>
+
+{% endblock %}

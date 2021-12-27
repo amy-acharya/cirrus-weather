@@ -1,0 +1,170 @@
+#map {
+    height: 600px;
+    width: 1000px;
+}
+
+/*body {
+    background-image: linear-gradient(lightskyblue, lightpink);
+    background-image: url('weather.png'); <-- comment
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%; <-- comment
+}*/
+
+body:before {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	display: block;
+	background-image: linear-gradient(lightskyblue, lightpink);
+	background-size: cover;
+}
+
+h1 {
+    font-family: 'Encode Sans SC', sans-serif;
+    color: navy;
+    font-size: 56px;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'Encode Sans SC', sans-serif;
+    color: navy;
+    font-size: 24px;
+}
+
+p {
+    font-family: 'Poiret One', cursive;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    color: navy;
+    font-family: 'Philosopher', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+button {
+    background-color: gainsboro;
+    border: 2px solid navy;
+    color: navy;
+    font-family: 'Encode Sans SC', sans-serif;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: navy;
+    color: white;
+}
+
+input {
+    background-color: gainsboro;
+    border: 2px solid navy;
+    color: navy;
+    border-radius: 4px;
+    font-family: 'Encode Sans SC', sans-serif;
+    padding: 13px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+
+input:hover {
+    background-color: darkgrey;
+}
+
+select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    background-color: gainsboro;
+    color: navy;
+    font-family: 'Encode Sans SC', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    transition-duration: 0.4s;
+    border: 2px solid navy;
+}
+
+table {
+    width: 60%;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+a:link {
+    color: navy;
+    text-decoration: none;
+}
+
+a:visited {
+    color: navy;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightcoral;
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+hr {
+    background-color: navy;
+    height: 2px;
+    border: 0;
+}
+
+#legend {
+    width: 60%;
+}
+
+.marker {
+    padding: 0px;
+}
+
+.parm {
+    text-align: left;
+    padding: 0px;
+}
+
+canvas#chart {
+    background-color: white;
+    align: center;
+    margin: 0 auto;
+}
+
+#formtable {
+    width: 40%;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*font-family: 'Great Vibes', cursive;*/
+/*font-family: 'Montserrat', sans-serif;*/
+/*font-family: 'Philosopher', sans-serif;*/
+/*font-family: 'Poiret One', cursive;*/

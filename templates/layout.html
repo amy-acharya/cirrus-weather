@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="/static/styles.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Encode+Sans+SC&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Encode+Sans+SC&family=Shadows+Into+Light+Two&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&family=Philosopher&family=Poiret+One&display=swap"
+        rel="stylesheet">
+
+    <title>Climate Record App</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+</head>
+
+<body>
+    <br>
+    <h1 align="center">CIRRUS Weather App: Climate Information, Research, and Records of the US</h1>
+    <p align="center">
+        Description: This app gives historical statistical records of
+        various climate conditions and weather
+        parameters. The data can be displayed for either a specified month and
+        year or a specified parameter.
+        Currently, the data is for 1975-2021 and has been collected for
+        all zipcodes of the USA from <a
+            href="https://www.visualcrossing.com/weather-data">this</a>
+        weather site and has been populated in a database. If the user wants to
+        see data for a specific month and year, they can
+        select a month from a drop-down menu and input a year from 2011 to 2021
+        in the year input field. After the user presses the submit button, the
+        program then searches the database, finds
+        the following parameters and their corresponding zipcodes, and
+        renders them on a map: </p>
+    <table>
+        <tr>
+            <td>Maximum Temperature</td>
+            <td>Minimum Temperature</td>
+            <td>Average Temperature</td>
+            <td>Wind Chill</td>
+        </tr>
+        <tr>
+            <td>Heat Index</td>
+            <td>Precipitation</td>
+            <td>Snow Depth</td>
+            <td>Wind Speed</td>
+        </tr>
+        <tr>
+            <td>Wind Gust</td>
+            <td>Visibility</td>
+            <td>Cloud Cover</td>
+            <td>Relative Humidity</td>
+        </tr>
+    </table>
+    <p>
+
+        For more information, hover over the marker, which will
+        display a label with the city, state, and zipcode of
+        that marker, as well as the parameter and the value of the parameter.
+        <br><br>
+        If the user wants to see data for a specific parameter, they can
+        select a parameter from the drop-down menu. After the user presses the
+        submit button, the program then searches the database, calculates the
+        average for each year for that parameter, and displays the results on a
+        chart. For more information on a specific data point, the user can
+        hover over it and more data will be displayed.
+        <br><br>
+
+        As per the website, units are in °F, inches, and miles.
+    </p>
+    <hr>
+    <table id="formtable">
+      <tr>
+
+        <td>
+          <form align="center" action="/" method="post">
+
+              <div class="form-group">
+                <input type="hidden" name="monthform" value="monthform">
+
+                  <select id="month" name="month">
+                      <option disabled selected value="">Month</option>
+
+                      {% for month in months %}
+                        <option value="{{ month }}">{{ month }}</option>
+                      {% endfor %}
+
+                  </select>
+
+                  <input type="number" id="year" name="year"
+                  placeholder="Year" required autocomplete="off"
+                  min=2011 max=2021>
+              </div>
+
+              <button class="btn btn-primary"
+              type="submit">Get Weather Data</button>
+          </form>
+        </td>
+
+        <td>
+            <form align="center" action="/" method="post">
+
+              <div class="form-group">
+                <input type="hidden" name="paramform" value="paramform">
+
+                <select id="param" name="param">
+                    <option disabled selected value="">Parameter</option>
+
+                    {% for parm in select_params %}
+                      <option value="{{ parm }}">{{ parm }}</option>
+                    {% endfor %}
+
+                </select>
+              </div>
+
+              <button class="btn btn-primary"
+              type="submit">Get Historical Chart</button>
+            </form>
+          </td>
+
+        </tr>
+      </table>
+    {% block main %}{% endblock %}
+</body>
+
+</html>

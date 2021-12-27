@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<br><hr><br>
+<h3 align="center">{{ user_param }} Trend Chart</h3>
+<div id="chartdiv" style="text-align:center;">
+    <canvas id="chart" width="600" height="400"></canvas>
+</div>
+    <script>
+
+      // Line chart data
+      var lineData = {
+        labels : [
+          {% for item in labels %}
+            "{{ item }}",
+          {% endfor %}
+        ],
+
+        datasets : [{
+          label: '{{ user_param }}',
+          fill: true,
+          backgroundColor: "rgba(245, 173, 255, 0.2)",
+          borderColor: "rgb(207, 168, 255)",
+          borderWidth: 1,
+          pointBackgroundColor: "navy",
+          pointBorderColor: "navy",
+
+          data : [
+            {% for item in values %}
+              {{ item }},
+            {% endfor %}]
+          }
+        ],
+
+      }
+
+      // get line chart canvas
+      var mychart = document.getElementById("chart").getContext("2d");
+
+      var LineChart = new Chart(mychart, {
+        type : 'line',
+        data : lineData,
+        options: {
+          responsive: false,
+          maintainAspectRatio: false,
+          scales: {
+
+            x: {
+              title: {
+                display: true,
+                text: 'Years',
+                color: 'navy',
+                font: {
+                    size: 18,
+                    weight: 700
+                }
+              }
+            },
+
+            y: {
+              title: {
+                display: true,
+                text: '{{ user_param }}' + ' (' + '{{ user_units }}' + ')',
+                color: 'navy',
+                font: {
+                    size: 18,
+                    weight: 700
+                }
+              }
+            }
+          }
+        }
+      });
+
+    </script>
+
+{% endblock %}
