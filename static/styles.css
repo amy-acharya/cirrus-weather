@@ -3,14 +3,6 @@
     width: 1000px;
 }
 
-/*body {
-    background-image: linear-gradient(lightskyblue, lightpink);
-    background-image: url('weather.png'); <-- comment
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size: 100% 100%; <-- comment
-}*/
-
 body:before {
 	content: "";
 	position: fixed;
@@ -163,8 +155,3 @@ canvas#chart {
     margin-left: auto;
     margin-right: auto;
 }
-
-/*font-family: 'Great Vibes', cursive;*/
-/*font-family: 'Montserrat', sans-serif;*/
-/*font-family: 'Philosopher', sans-serif;*/
-/*font-family: 'Poiret One', cursive;*/
