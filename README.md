@@ -77,7 +77,7 @@ For this query option, select a specific parameter, such as "Average Temperature
 
 **results.html**: HTML file for processing and visualization of query results.
 
-**weatherdb.sqlite**: The database that stores all the database tables.
+**weatherdb.sqlite**: The database that stores all the database tables. This database is not included (too large to upload). 
 
 **zipcount.json**: Contains the zip code count for each state. Used to determine whether all zip codes for the current state have been collected or not.
 
